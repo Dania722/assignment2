@@ -33,8 +33,14 @@ var rootElement = document.documentElement;
 
 function scrollToTop() {
   // Scroll to top logic
+
+  //ROOT elements are also called document elements.
+  //rootElement returns the Element that is the root element of the document
   rootElement.scrollTo({
     top: 0,
+
+   // auto	Allows a straight jump "scroll effect" between elements within the scrolling box. This is default
+//smooth	Allows a smooth animated "scroll effect" between elements within the scrolling box.
     behavior: "smooth"
   });
 }
@@ -66,8 +72,8 @@ let validatemessage= () =>{
     var required = 30;
     var left = required - message.length; // gives value how much character is left
     if(left > 0){
-        messageError.innerHTML = left + ' more Characters Required';
-        setTimeout(function(){messageError.style.display = 'none';}, 3000);
+      messageError.innerHTML = left + ' more Characters Required';
+        setTimeout(function(){messageError.style.display = 'none';}, 1000);
         return false;
     }
     messageError.innerHTML = '<i class="fas fa-check-circle"></i>';
@@ -75,12 +81,11 @@ let validatemessage= () =>{
 }
 
 function validateform(){
-    if(!validatename() || !validatemessage() || !validateemail()){
-        submitError.style.display = 'block';
-        submitError.innerHTML = 'Please fill all the fields';
-        setTimeout(function(){submitError.style.display = 'none';},3000);
+    if(!validatemessage() || !validateemail()){
+      submitError.style.display = 'block';
+      submitError.innerHTML = 'Please fill all the fields';
+        setTimeout(function(){submitError.style.display = 'block';},1000);
         return false;
     }
-    return true
-
+    return true;
 }
